@@ -1,6 +1,43 @@
 # Arquitectura y Diseño del Portfolio — Ramon Ariel Moreno
 
-## Inventario de Componentes y Posiciones
+## 1. Fundamentos Visuales
+
+Análisis extraído de `index.html` y las hojas de estilo del proyecto (`src/index.css` / `<style>`):
+
+### Tipografías y Stack de Fuentes
+- **Familia tipográfica principal:** `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif` (Stack de fuentes de sistema nativas de alta legibilidad y rendimiento).
+- **Pesos y Estilos:** Uso extensivo de pesos pesados y negritas (`font-black`, `font-bold`, `font-weight: 900`) para reforzar el estilo Brutalista y de E-Commerce / Streetwear.
+- **Fuentes monoespaciadas:** Clases `font-mono` aplicadas a etiquetas, SKUs, metadatos, tickers y coordenadas geográficas.
+
+### Paleta de Colores
+- **Color de Papel / Fondo Principal (`paper`):** `#F4F1EA` (Tono crema/papel cálido característico del diseño editorial brutalista).
+- **Color Negro Brutalista (`brutalist-black`):** `#000000` (Utilizado para fondos oscuros, tipografías principales, contornos y bordes sólidos de alto contraste).
+- **Color Rojo Graffiti (`graffiti-red`):** `#E61C1C` (Color de acento primario para llamadas a la acción, badges destacados, tickers de marca y alertas visuales).
+- **Blanco (`#FFFFFF`):** `#FFFFFF` (Texto en botones y contenedores de acento oscuro/rojo).
+
+---
+
+## 2. Estilos Globales
+
+Clases personalizadas, efectos y animaciones definidos en el sistema visual:
+
+- **`.brutalist-box`:**
+  - *Definición:* Bordes sólidos de 3px a 4px de ancho en color negro (`#000000`), acompañados de sombras duras y desalineadas (`box-shadow: 6px 6px 0px #000000` o `8px 8px 0px #000000`).
+  - *Comportamiento:* Transiciones rápidas en hover para elevación o desplazamiento físico simulado.
+- **`.brutalist-button`:**
+  - *Definición:* Botón interactivo característico con borde negro de 3px, fondo rojo graffiti (`#E61C1C`), texto blanco en negrita extrema (`font-weight: 900`), y sombra dura (`4px 4px 0px #000000`).
+  - *Comportamiento:* Efecto de desplazamiento y ajuste de sombra en `:hover` y `:active` para sensación táctil real.
+- **Efectos de Animación (Keyframes):**
+  - `slideFromTop`: Entrada deslizante desde la parte superior (`opacity: 0` a `1`, `translateY(-20px)` a `0`).
+  - `slideFromLeft` / `slideFromRight` / `slideFromBottom`: Entradas direccionales escaladas.
+  - `slideFromBottomRightDiagonal`: Animación diagonal específica para la tarjeta de foto de perfil.
+  - `marqueeLeft`: Animación lineal infinita horizontal (`animation: marqueeLeft 22s linear infinite`) para los tickers de marca a pantalla completa.
+- **Efectos Decorativos:**
+  - `.torn-edge`: Simulación de bordes rasgados mediante gradientes lineales repetidos.
+
+---
+
+## 3. Inventario de Componentes y Posiciones
 
 Lista ordenada de todos los componentes de la interfaz de usuario presentes en `index.html`, analizados de principio a fin:
 
@@ -121,32 +158,21 @@ Lista ordenada de todos los componentes de la interfaz de usuario presentes en `
 
 ---
 
-## Sistema Visual y Estilos Base
+## 4. Reglas de Posicionamiento Complejo y Z-Index
 
-Análisis extraído de `index.html` y las hojas de estilo del proyecto (`src/index.css` / `<style>`):
+Documentación del comportamiento de capas, apilamiento y elementos flotantes:
 
-### 1. Tipografías y Stack de Fuentes
-- **Familia tipográfica principal:** `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif` (Stack de fuentes de sistema nativas de alta legibilidad y rendimiento).
-- **Pesos y Estilos:** Uso extensivo de pesos pesados y negritas (`font-black`, `font-bold`, `font-weight: 900`) para reforzar el estilo Brutalista y de E-Commerce / Streetwear.
-- **Fuentes monoespaciadas:** Clases `font-mono` aplicadas a etiquetas, SKUs, metadatos, tickers y coordenadas geográficas.
+1. **CV Modal (`#cv-modal`)**
+   - **Posicionamiento:** `fixed inset-0` (cubre la totalidad del viewport con `top-0 right-0 bottom-0 left-0`).
+   - **Capa y Z-Index:** `z-50`, asegurando que se sitúe por encima de cualquier otro contenido de la página.
+   - **Opacidad / Backdrop:** Fondo oscurecido con `bg-black/80` (negro al 80% de opacidad) que actúa como telón de fondo.
+   - **Comportamiento:** Centrado mediante `flex items-center justify-center p-4`. Contenedor modal con `hidden` por defecto en estado inactivo; se muestra eliminando la clase `hidden` mediante JavaScript. Incluye cierre automático por clic fuera del contenedor modal o al presionar la tecla `Escape`.
 
-### 2. Paleta de Colores
-- **Color de Papel / Fondo Principal (`paper`):** `#F4F1EA` (Tono crema/papel cálido característico del diseño editorial brutalista).
-- **Color Negro Brutalista (`brutalist-black`):** `#000000` (Utilizado para fondos oscuros, tipografías principales, contornos y bordes sólidos de alto contraste).
-- **Color Rojo Graffiti (`graffiti-red`):** `#E61C1C` (Color de acento primario para llamadas a la acción, badges destacados, tickers de marca y alertas visuales).
-- **Blanco (`#FFFFFF`):** `#FFFFFF` (Texto en botones y contenedores de acento oscuro/rojo).
+2. **Toasty! Widget (`#toasty-widget`)**
+   - **Posicionamiento:** `fixed bottom-0 right-0` (fijado en la esquina inferior derecha de la ventana gráfica).
+   - **Capa y Z-Index:** `z-50`, garantizando visibilidad flotante por encima del contenido base.
+   - **Desbordamiento / Peek actual:** Inicialmente oculto fuera de pantalla mediante `style="transform: translate(100%, 100%);"`. Al activarse mediante temporizador (`showToasty()`), la transformación cambia dinámicamente a `translate(0, 0)`, permitiendo que el personaje y su boceto de diálogo ("TOASTY!") hagan peek / aparezcan de forma fluida con transición `transition: transform 0.45s cubic-bezier(0.3, 1.3, 0.3, 1)`.
 
-### 3. Estilos Globales / Reutilizables y Clases Personalizadas
-- **`.brutalist-box`:**
-  - *Definición:* Bordes sólidos de 3px a 4px de ancho en color negro (`#000000`), acompañados de sombras duras y desalineadas (`box-shadow: 6px 6px 0px #000000` o `8px 8px 0px #000000`).
-  - *Comportamiento:* Transiciones rápidas en hover para elevación o desplazamiento físico simulado.
-- **`.brutalist-button`:**
-  - *Definición:* Botón interactivo característico con borde negro de 3px, fondo rojo graffiti (`#E61C1C`), texto blanco en negrita extrema (`font-weight: 900`), y sombra dura (`4px 4px 0px #000000`).
-  - *Comportamiento:* Efecto de desplazamiento y ajuste de sombra en `:hover` y `:active` para sensación táctil real.
-- **Efectos de Animación (Keyframes):**
-  - `slideFromTop`: Entrada deslizante desde la parte superior (`opacity: 0` a `1`, `translateY(-20px)` a `0`).
-  - `slideFromLeft` / `slideFromRight` / `slideFromBottom`: Entradas direccionales escaladas.
-  - `slideFromBottomRightDiagonal`: Animación diagonal específica para la tarjeta de foto de perfil.
-  - `marqueeLeft`: Animación lineal infinita horizontal (`animation: marqueeLeft 22s linear infinite`) para los tickers de marca a pantalla completa.
-- **Efectos Decorativos:**
-  - `.torn-edge`: Simulación de bordes rasgados mediante gradientes lineales repetidos.
+3. **Header & Ticker Bar**
+   - **Ticker Bar:** Ubicado al inicio del documento (`<body>`), posicionado en el flujo estático con clases de marquesina/barra superior, acompañado de la animación de entrada `anim-top`.
+   - **Header (`<header>`):** Situado inmediatamente debajo del Ticker Bar en el flujo documental estático, utilizando la clase `anim-left` para su aparición escalonada. Su apilamiento pertenece al flujo normal de la página pero precede visualmente a la sección de héroe.
