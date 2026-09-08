@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramon Ariel Moreno — Portfolio 2026</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F4F1EA',
+            'brutalist-black': '#000000',
+            'graffiti-red': '#E61C1C',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      background-color: #F4F1EA;
+      color: #000000;
+    }
+    body {
+      background-color: #F4F1EA;
+      color: #000000;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .brutalist-box {
+      border: 4px solid #000000;
+      box-shadow: 8px 8px 0px #000000;
+    }
+    .brutalist-button {
+      border: 3px solid #000000;
+      background-color: #E61C1C;
+      color: #FFFFFF;
+      font-weight: 900;
+      box-shadow: 4px 4px 0px #000000;
+      transition: all 0.1s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .brutalist-button:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #000000;
+    }
+    .brutalist-button:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px #000000;
+    }
+    @keyframes slideFromTop { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes slideFromLeft { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
+    @keyframes slideFromRight { 0% { opacity: 0; transform: translateX(30px); } 100% { opacity: 1; transform: translateX(0); } }
+    @keyframes slideFromBottom { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+    .anim-top { animation: slideFromTop 0.5s ease-out forwards; }
+    .anim-left { animation: slideFromLeft 0.6s ease-out 0.2s forwards; opacity: 0; }
+    .anim-bottom { animation: slideFromBottom 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; opacity: 0; }
+    .anim-right { animation: slideFromRight 0.6s ease-out 0.6s forwards; opacity: 0; }
+    @keyframes slideFromBottomRightDiagonal { 0% { opacity: 0; transform: translate(50px, 50px); } 100% { opacity: 1; transform: translate(0, 0); } }
+    .anim-diagonal-photo { animation: slideFromBottomRightDiagonal 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards; opacity: 0; }
+    @keyframes marqueeLeft {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marqueeRight {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+    }
+    .marquee-track-left {
+      display: inline-flex;
+      animation: marqueeLeft 22s linear infinite;
+    }
+    .marquee-track-right {
+      display: inline-flex;
+      width: max-content;
+      animation: marqueeLeft 35s linear infinite reverse;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#F4F1EA] text-black p-4 md:p-10 selection:bg-[#E61C1C] selection:text-white">
+  
+  <!-- Streetwear / E-Commerce Drop Ticker Bar -->
+  <div class="anim-top border-4 border-black bg-black text-white py-2 px-4 mb-6 shadow-[4px_4px_0px_0px_#E61C1C] flex justify-between items-center font-mono text-xs uppercase tracking-widest overflow-visible relative">
+    <span class="text-[#E61C1C] font-black">● PORTFOLIO ACTIVO 2026</span>
+    <span class="hidden sm:inline">// DISEÑO Y CONSTRUCCIÓN DE PRODUCTO // ACCESO GLOBAL</span>
+    <span class="bg-[#E61C1C] text-white px-3 py-1 font-bold border-2 border-black shadow-[2px_2px_0px_0px_#FFFFFF] rotate-2 inline-block">ESTADO: DISPONIBLE</span>
+  </div>
+
+  <!-- Header / Brand Nav -->
+  <header class="anim-left border-4 border-black bg-white p-6 mb-8 shadow-[8px_8px_0px_0px_#000000] flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+    <div>
+      <div class="font-mono text-xs uppercase bg-[#E61C1C] text-white px-2 py-1 inline-block font-black mb-2 border-2 border-black">
+        LABORATORIO DE PROYECTOS
+      </div>
+      <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">
+        Ramon Ariel Moreno
+      </h1>
+    </div>
+    <div class="flex flex-wrap items-center gap-4 font-mono text-sm">
+      <a
+        href="./CONTEXT.md"
+        target="_blank"
+        rel="noreferrer"
+        class="border-3 border-black bg-[#F4F1EA] px-4 py-2 font-black shadow-[3px_3px_0px_0px_#000000] cursor-pointer transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 no-underline inline-block text-black"
+      >
+        CONTEXT.MD [AI]
+      </a>
+      <a
+        href="https://wa.me/5491161268338?text=Hola%20Ramon,%20vi%20tu%20portfolio"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="brutalist-button px-5 py-2 uppercase font-black text-sm no-underline inline-block"
+      >
+        CONSULTA_RÁPIDA ↗
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto space-y-12">
+    <!-- Hero Section / Collage Layout -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <!-- Main Hero Card -->
+      <div class="anim-bottom lg:col-span-8 bg-white border-4 border-black p-8 md:p-12 shadow-[8px_8px_0px_0px_#000000] flex flex-col justify-between relative">
+        <div class="absolute -top-4 -right-4 bg-[#E61C1C] text-white font-mono text-xs font-black px-4 py-2 border-3 border-black shadow-[4px_4px_0px_0px_#000000] rotate-3 z-10">
+          VISIÓN DE PRODUCTO // 01
+        </div>
+        <div>
+          <span class="inline-block bg-black text-white font-mono text-xs px-3 py-1 mb-6 uppercase tracking-widest border-2 border-black">
+            UX/UI Designer &amp; Design Engineer / Product Builder
+          </span>
+           <p class="text-2xl md:text-4xl font-black leading-tight uppercase tracking-tight mb-6">
+             DISEÑO COSAS CON RAZÓN PARA EXISTIR_PROBLEMAS REALES, PERSONAS REALES Y EL CRITERIO PARA CREAR CON ALMA+
+           </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t-4 border-black">
+          <a
+            href="#"
+            id="open-cv-btn"
+            class="border-3 border-black bg-[#F4F1EA] hover:bg-black hover:text-white px-6 py-3 uppercase text-center font-black text-sm tracking-wider shadow-[4px_4px_0px_0px_#000000] transition-all no-underline"
+          >
+            VER CV / CURRICULUM
+          </a>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noreferrer"
+            class="border-3 border-black bg-black text-white hover:bg-[#E61C1C] px-6 py-3 uppercase text-center font-black text-sm tracking-wider shadow-[4px_4px_0px_0px_#000000] transition-all no-underline"
+          >
+            REPO GITHUB ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Brutalist Profile Photo Placeholder -->
+      <div class="anim-diagonal-photo lg:col-span-4 bg-black text-[#F4F1EA] border-4 border-black p-6 shadow-[12px_12px_0px_0px_#E61C1C] flex flex-col justify-between relative overflow-hidden">
+        <div class="absolute top-2 right-2 font-mono text-[10px] text-[#E61C1C] font-black border border-[#E61C1C] px-1">
+          FOTO_REF_FALTANTE
+        </div>
+        <div class="my-auto py-8 text-center border-2 border-dashed border-[#F4F1EA]/40 p-6 bg-neutral-900">
+          <div class="font-mono text-xs tracking-widest text-[#E61C1C] mb-2 font-bold">
+            [FOTO_DE_PERFIL]
+          </div>
+          <div class="text-xl font-black uppercase tracking-wider mb-2">
+            RAMON ARIEL MORENO
+          </div>
+          <div class="font-mono text-xs text-neutral-400">
+            // 34.6037° S, 58.3816° W
+          </div>
+        </div>
+        <div class="font-mono text-xs text-neutral-300 pt-4 border-t border-neutral-800 flex justify-between">
+          <span>EDICIÓN: 1/1</span>
+          <span class="text-[#E61C1C] font-bold">VERIFICADO</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifesto / About Section -->
+    <section class="bg-white border-4 border-black p-8 md:p-10 shadow-[8px_8px_0px_0px_#000000] relative">
+      <div class="absolute -top-3 left-8 bg-[#E61C1C] text-white font-mono text-xs font-black px-3 py-1 border-2 border-black shadow-[2px_2px_0px_0px_#000000] rotate-2 inline-block z-10">MANIFIESTO // ESPECIFICACIONES</div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center mt-2">
+        <div class="md:col-span-4 font-mono text-2xl font-black uppercase tracking-tight">
+          &gt; FILOSOFÍA DE DISEÑO, CÓDIGO Y ALMA
+        </div>
+        <div class="md:col-span-8 text-lg font-medium leading-relaxed border-l-4 border-black pl-6">
+          Diseñador UX/UI enfocado en evolucionar hacia Design Engineering y Product Building. Especializado en escuchar, tener empatía y trabajar con amor.
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee Tickers (Full Width, No Gap) -->
+    <div class="my-12 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] flex flex-col gap-0 p-0 m-0 border-t-4 border-b-4 border-black">
+      <div class="bg-black text-white py-3 overflow-hidden whitespace-nowrap flex marquee-container border-b-4 border-black">
+        <div class="marquee-track-left font-mono text-sm md:text-base font-black tracking-widest uppercase">
+          <span class="mx-6">✦ DESIGN SYSTEMS ✦ VIBE CODING ✦ PRODUCT BUILDING ✦ UX/UI DESIGN ✦</span>
+          <span class="mx-6">✦ DESIGN SYSTEMS ✦ VIBE CODING ✦ PRODUCT BUILDING ✦ UX/UI DESIGN ✦</span>
+          <span class="mx-6">✦ DESIGN SYSTEMS ✦ VIBE CODING ✦ PRODUCT BUILDING ✦ UX/UI DESIGN ✦</span>
+          <span class="mx-6">✦ DESIGN SYSTEMS ✦ VIBE CODING ✦ PRODUCT BUILDING ✦ UX/UI DESIGN ✦</span>
+        </div>
+      </div>
+      <div class="bg-[#E61C1C] text-white py-2.5 overflow-hidden whitespace-nowrap flex marquee-container">
+        <div class="marquee-track-right font-mono text-xs md:text-sm font-black tracking-widest uppercase w-max">
+          <span class="mx-6">► MADE IN ARGENTINA_BSAS_24/7/365 ►</span>
+          <span class="mx-6">► MADE IN ARGENTINA_BSAS_24/7/365 ►</span>
+          <span class="mx-6">► MADE IN ARGENTINA_BSAS_24/7/365 ►</span>
+          <span class="mx-6">► MADE IN ARGENTINA_BSAS_24/7/365 ►</span>
+          <span class="mx-6">► MADE IN ARGENTINA_BSAS_24/7/365 ►</span>
+          <span class="mx-6">► MADE IN ARGENTINA_BSAS_24/7/365 ►</span>
+          <span class="mx-6">► MADE IN ARGENTINA_BSAS_24/7/365 ►</span>
+          <span class="mx-6">► MADEIN ARGENTINA_BSAS_24/7/365 ►</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Section - Streetwear E-Commerce Grid -->
+    <section class="space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b-4 border-black pb-4">
+        <div>
+          <span class="font-mono text-xs bg-[#E61C1C] text-white px-3 py-1 font-black uppercase border-2 border-black shadow-[4px_4px_0px_0px_#000000] rotate-2 inline-block">
+            SELECCIÓN DE TRABAJOS // DESTACADOS 03
+          </span>
+          <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight mt-2">
+            PROYECTOS DESTACADOS [3]
+          </h2>
+        </div>
+        <div class="font-mono text-xs font-bold bg-white border-2 border-black px-3 py-1 shadow-[3px_3px_0px_0px_#000000]">
+          ORDENAR POR: MAYOR IMPACTO
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <div class="bg-white border-4 border-black p-4 shadow-[6px_6px_0px_0px_#000000] flex flex-col justify-between relative group hover:-translate-y-1 transition-transform">
+          <div class="absolute top-0 right-0 bg-black group-hover:bg-[#E61C1C] text-white font-mono text-[10px] font-black px-2 py-0.5 border-l-2 border-b-2 border-black z-10 transition-colors">
+            SKU: RM-01
+          </div>
+          <div>
+            <!-- Clean Image Mockup for ResetAr -->
+            <div class="aspect-video w-full relative mb-3 border-2 border-black shadow-[3px_3px_0px_0px_#000000] bg-neutral-900 overflow-hidden">
+              <img src="porfolio/reseteAR.jpg" alt="ResetAr Preview" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
+            </div>
+
+            <div class="font-mono text-[10px] text-[#E61C1C] font-black mb-1 uppercase">
+              ITEM 01 // APP // 2022
+            </div>
+            <h3 class="text-xl font-black uppercase mb-2 tracking-tight group-hover:text-[#E61C1C] transition-colors">
+              RESETEAR //
+            </h3>
+            <p class="text-neutral-700 text-xs leading-relaxed mb-3 font-medium">
+              Acompañamiento empático y orientación confiable para el camino de regreso al bienestar corporal.
+            </p>
+            <ul class="text-[11px] font-mono text-neutral-800 space-y-1 mb-3 border-l-2 border-[#E61C1C] pl-2">
+              <li>• <strong class="text-black">Autotest:</strong> Evaluación y prevención.</li>
+              <li>• <strong class="text-black">Ayunos:</strong> Temporizadores y glucosa.</li>
+              <li>• <strong class="text-black">Plan Nutricional:</strong> Programas 7/14/21 días.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-[10px] font-mono font-black bg-[#F4F1EA] border-2 border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_#000000]">UX/UI Mobile</span>
+              <span class="text-[10px] font-mono font-black bg-[#F4F1EA] border-2 border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_#000000]">Design System</span>
+              <span class="text-[10px] font-mono font-black bg-[#F4F1EA] border-2 border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_#000000]">Prototipado</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="bg-white border-4 border-black p-4 shadow-[6px_6px_0px_0px_#000000] flex flex-col justify-between relative group hover:-translate-y-1 transition-transform">
+          <div class="absolute top-0 right-0 bg-black group-hover:bg-[#E61C1C] text-white font-mono text-[10px] font-black px-2 py-0.5 border-l-2 border-b-2 border-black transition-colors">
+            SKU: RM-02
+          </div>
+          <div>
+            <!-- Clean Iframe Container for Project 2 -->
+            <div class="aspect-video w-full relative mb-3 border-2 border-black shadow-[3px_3px_0px_0px_#000000] bg-neutral-900 overflow-hidden">
+              <iframe src="https://skatepark-villa-luro.vercel.app/" title="Skatepark Villa Luro" frameBorder="0" scrolling="no" class="w-full h-full object-cover overflow-hidden border-0 grayscale group-hover:grayscale-0 transition-all duration-300 pointer-events-none"></iframe>
+            </div>
+
+            <div class="font-mono text-[10px] text-[#E61C1C] font-black mb-1 uppercase">
+              ITEM 02 // WEB // 2025
+            </div>
+            <h3 class="text-xl font-black uppercase mb-2 tracking-tight group-hover:text-[#E61C1C] transition-colors">
+              Skatepark Villa Luro //
+            </h3>
+            <p class="text-neutral-700 text-xs leading-relaxed mb-3 font-medium">
+              Plataforma web comunitaria para la pista de Villa Luro:
+            </p>
+            <ul class="text-[11px] font-mono text-neutral-800 space-y-1 mb-3 border-l-2 border-[#E61C1C] pl-2">
+              <li>• <strong class="text-black">Clases &amp; Eventos:</strong> Sesiones personalizadas/grupales y agenda de actividades.</li>
+              <li>• <strong class="text-black">Mantenimiento:</strong> Sistema de donaciones para el cuidado de la pista.</li>
+              <li>• <strong class="text-black">Comunidad:</strong> Muro interactivo de mensajes y guía de buenas prácticas.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-[10px] font-mono font-black bg-[#F4F1EA] border-2 border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_#000000]">Web Development</span>
+              <span class="text-[10px] font-mono font-black bg-[#F4F1EA] border-2 border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_#000000]">Database Systems</span>
+              <span class="text-[10px] font-mono font-black bg-[#F4F1EA] border-2 border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_#000000]">Fullstack</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="bg-white border-4 border-black p-4 shadow-[6px_6px_0px_0px_#000000] flex flex-col justify-between relative group hover:-translate-y-1 transition-transform">
+          <div class="absolute top-0 right-0 bg-black group-hover:bg-[#E61C1C] text-white font-mono text-[10px] font-black px-2 py-0.5 border-l-2 border-b-2 border-black transition-colors">
+            SKU: RM-03
+          </div>
+          <div>
+            <!-- Clean Image Mockup for Project 3 -->
+            <div class="aspect-video w-full relative mb-3 border-2 border-black shadow-[3px_3px_0px_0px_#000000] bg-neutral-900 overflow-hidden">
+              <img src="image 2.jpg" alt="Motor de Prototipado" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
+            </div>
+
+            <div class="font-mono text-[10px] text-[#E61C1C] font-black mb-1 uppercase">
+              ITEM 03 // WEB // 2026
+            </div>
+            <h3 class="text-xl font-black uppercase mb-2 tracking-tight group-hover:text-[#E61C1C] transition-colors">
+              MOVIMIENTO LIBERACION NACIONAL//
+            </h3>
+            <p class="text-neutral-700 text-xs leading-relaxed mb-3 font-medium">
+              Plataforma institucional para la difusión y participación comunitaria:
+            </p>
+            <ul class="text-[11px] font-mono text-neutral-800 space-y-1 mb-3 border-l-2 border-[#E61C1C] pl-2">
+              <li>• <strong class="text-black">Identidad:</strong> Misión, visión y referentes del movimiento.</li>
+              <li>• <strong class="text-black">Proyectos de Ley:</strong> Documentación y archivos PDF para descarga.</li>
+              <li>• <strong class="text-black">Participación:</strong> Sección de comentarios e interacción comunitaria.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-[10px] font-mono font-black bg-[#F4F1EA] border-2 border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_#000000]">UX Audit</span>
+              <span class="text-[10px] font-mono font-black bg-[#F4F1EA] border-2 border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_#000000]">Editorial Design</span>
+              <span class="text-[10px] font-mono font-black bg-[#F4F1EA] border-2 border-black px-2 py-0.5 shadow-[2px_2px_0px_0px_#000000]">Design System</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / E-Commerce Checkout Section -->
+    <section class="bg-white border-4 border-black p-8 md:p-12 shadow-[8px_8px_0px_0px_#000000] mb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <span class="font-mono text-xs bg-[#E61C1C] text-white px-3 py-1 uppercase font-black border-2 border-black shadow-[2px_2px_0px_0px_#000000] rotate-2 inline-block">DESPLIEGUE // DISPONIBILIDAD</span>
+          <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight mt-3 mb-4">
+            ¿LISTO PARA LLEVAR TU IDEA A LA REALIDAD?
+          </h2>
+          <p class="text-neutral-700 text-base font-medium">
+            Diseñado y desarrollado con foco en escala, rendimiento y precisión visual, mostrando la identidad real de cada proyecto.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 justify-end">
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noreferrer"
+            class="border-3 border-black bg-[#F4F1EA] hover:bg-black hover:text-white px-6 py-3 font-mono text-sm font-black uppercase text-center shadow-[4px_4px_0px_0px_#000000] no-underline transition-all"
+          >
+            LINKEDIN ↗
+          </a>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=arimoreno77@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="brutalist-button px-6 py-3 font-mono text-sm uppercase text-center no-underline"
+          >
+            ENVIAR EMAIL
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-7xl mx-auto border-t-4 border-black pt-6 pb-12 flex flex-col md:flex-row justify-between items-center font-mono text-xs gap-4">
+    <div class="group cursor-pointer">
+      <span>© 2026 Ramon Ariel Moreno.</span>
+      <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-block ml-1">Y TODOS LOS DERECHOS RESERVADOS.</span>
+    </div>
+    <div class="flex gap-4 font-bold">
+      <span>PORTFOLIO_URBANO_HUMANO</span>
+      <span class="text-[#E61C1C]">// HTML + TAILWIND CDN</span>
+    </div>
+  </footer>
+
+  <!-- Toasty! Widget -->
+  <div id="toasty-widget" class="fixed bottom-0 right-0 z-50 pointer-events-auto cursor-pointer" style="transform: translate(100%, 100%); transition: transform 0.45s cubic-bezier(0.3, 1.3, 0.3, 1);">
+    <div class="relative">
+      <div id="toasty-bubble" class="absolute -top-3 left-4 bg-[#E61C1C] text-white font-black text-xs uppercase px-2 py-1 border-2 border-black shadow-[2px_2px_0px_0px_#000000] rotate-[-6deg] opacity-0 transition-opacity">
+        TOASTY!
+      </div>
+      <img src="porfolio/ramon-removebg-preview.png" alt="Ramon Toasty" class="h-[160px] w-auto object-contain select-none" />
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const widget = document.getElementById('toasty-widget');
+      const bubble = document.getElementById('toasty-bubble');
+      let hideTimeout = null;
+
+      function showToasty() {
+        widget.style.transform = 'translate(0, 0)';
+        if (bubble) bubble.style.opacity = '1';
+        
+        if (hideTimeout) clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+          hideToasty();
+        }, 1500);
+      }
+
+      function hideToasty() {
+        if (hideTimeout) clearTimeout(hideTimeout);
+        widget.style.transform = 'translate(100%, 100%)';
+        if (bubble) bubble.style.opacity = '0';
+      }
+
+      widget.addEventListener('click', () => {
+        hideToasty();
+      });
+
+      setTimeout(() => {
+        showToasty();
+        setInterval(() => {
+          showToasty();
+        }, 35000);
+      }, 3000);
+
+      // CV Modal logic
+      const openCvBtn = document.getElementById('open-cv-btn');
+      const cvModal = document.getElementById('cv-modal');
+      const closeCvBtn = document.getElementById('close-cv-modal');
+
+      if (openCvBtn && cvModal && closeCvBtn) {
+        openCvBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          cvModal.classList.remove('hidden');
+        });
+
+        closeCvBtn.addEventListener('click', () => {
+          cvModal.classList.add('hidden');
+        });
+
+        cvModal.addEventListener('click', (e) => {
+          if (e.target === cvModal) {
+            cvModal.classList.add('hidden');
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !cvModal.classList.contains('hidden')) {
+            cvModal.classList.add('hidden');
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- CV Modal -->
+  <div id="cv-modal" class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 hidden">
+    <div class="bg-[#F4F1EA] border-4 border-black w-full max-w-3xl w-fit mx-auto max-h-[90vh] flex flex-col shadow-[12px_12px_0px_0px_#000000]">
+      <!-- Modal Header -->
+      <div class="bg-black text-white px-6 py-4 flex justify-between items-center border-b-4 border-black font-mono">
+        <span class="text-xs md:text-sm font-black uppercase tracking-wider text-[#E61C1C]">CURRICULUM_VITAE // 1.1</span>
+        <div class="flex items-center gap-3">
+          <a
+            href="cv-1.jpg"
+            download="CV_Ramon_Ariel_Moreno.jpg"
+            target="_self"
+            onclick="event.preventDefault(); fetch('cv-1.jpg').then(res => res.blob()).then(blob => { const url = window.URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'CV_Ramon_Ariel_Moreno.jpg'; document.body.appendChild(a); a.click(); document.body.removeChild(a); window.URL.revokeObjectURL(url); }).catch(() => { window.location.href = 'cv-1.jpg'; });"
+            class="border-2 border-neutral-700 bg-neutral-900 text-white hover:bg-white hover:text-black px-4 py-1.5 text-xs font-black uppercase tracking-wider transition-all shadow-[2px_2px_0px_0px_#000000] no-underline inline-flex items-center gap-1"
+          >
+            [ DESCARGAR CV ↗ ]
+          </a>
+          <button
+            id="close-cv-modal"
+            class="border-2 border-neutral-700 bg-neutral-900 text-white hover:bg-[#E61C1C] hover:border-black px-3 py-1.5 text-xs font-black uppercase tracking-wider transition-all shadow-[2px_2px_0px_0px_#000000] cursor-pointer"
+          >
+            [ X ]
+          </button>
+        </div>
+      </div>
+      <!-- Modal Body -->
+      <div class="p-4 bg-neutral-900 flex justify-center items-center flex-1 max-h-[80vh] overflow-hidden">
+        <img src="cv-1.jpg" alt="CV Ramon Ariel Moreno" class="max-w-full max-h-[80vh] w-auto h-auto object-contain border-2 border-black shadow-[4px_4px_0px_0px_#E61C1C]" />
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+</html>
