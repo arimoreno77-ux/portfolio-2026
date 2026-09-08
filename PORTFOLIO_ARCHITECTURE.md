@@ -118,3 +118,35 @@ Lista ordenada de todos los componentes de la interfaz de usuario presentes en `
     - **Nombre / Identificador:** Botón de Cierre del Modal (`[ X ]`)
     - **Etiqueta HTML / Elemento:** `<button>` (con ID `close-cv-modal`)
     - **Posición en la estructura:** Cabecera superior dentro del Modal de Currículum (`cv-modal`).
+
+---
+
+## Sistema Visual y Estilos Base
+
+Análisis extraído de `index.html` y las hojas de estilo del proyecto (`src/index.css` / `<style>`):
+
+### 1. Tipografías y Stack de Fuentes
+- **Familia tipográfica principal:** `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif` (Stack de fuentes de sistema nativas de alta legibilidad y rendimiento).
+- **Pesos y Estilos:** Uso extensivo de pesos pesados y negritas (`font-black`, `font-bold`, `font-weight: 900`) para reforzar el estilo Brutalista y de E-Commerce / Streetwear.
+- **Fuentes monoespaciadas:** Clases `font-mono` aplicadas a etiquetas, SKUs, metadatos, tickers y coordenadas geográficas.
+
+### 2. Paleta de Colores
+- **Color de Papel / Fondo Principal (`paper`):** `#F4F1EA` (Tono crema/papel cálido característico del diseño editorial brutalista).
+- **Color Negro Brutalista (`brutalist-black`):** `#000000` (Utilizado para fondos oscuros, tipografías principales, contornos y bordes sólidos de alto contraste).
+- **Color Rojo Graffiti (`graffiti-red`):** `#E61C1C` (Color de acento primario para llamadas a la acción, badges destacados, tickers de marca y alertas visuales).
+- **Blanco (`#FFFFFF`):** `#FFFFFF` (Texto en botones y contenedores de acento oscuro/rojo).
+
+### 3. Estilos Globales / Reutilizables y Clases Personalizadas
+- **`.brutalist-box`:**
+  - *Definición:* Bordes sólidos de 3px a 4px de ancho en color negro (`#000000`), acompañados de sombras duras y desalineadas (`box-shadow: 6px 6px 0px #000000` o `8px 8px 0px #000000`).
+  - *Comportamiento:* Transiciones rápidas en hover para elevación o desplazamiento físico simulado.
+- **`.brutalist-button`:**
+  - *Definición:* Botón interactivo característico con borde negro de 3px, fondo rojo graffiti (`#E61C1C`), texto blanco en negrita extrema (`font-weight: 900`), y sombra dura (`4px 4px 0px #000000`).
+  - *Comportamiento:* Efecto de desplazamiento y ajuste de sombra en `:hover` y `:active` para sensación táctil real.
+- **Efectos de Animación (Keyframes):**
+  - `slideFromTop`: Entrada deslizante desde la parte superior (`opacity: 0` a `1`, `translateY(-20px)` a `0`).
+  - `slideFromLeft` / `slideFromRight` / `slideFromBottom`: Entradas direccionales escaladas.
+  - `slideFromBottomRightDiagonal`: Animación diagonal específica para la tarjeta de foto de perfil.
+  - `marqueeLeft`: Animación lineal infinita horizontal (`animation: marqueeLeft 22s linear infinite`) para los tickers de marca a pantalla completa.
+- **Efectos Decorativos:**
+  - `.torn-edge`: Simulación de bordes rasgados mediante gradientes lineales repetidos.
