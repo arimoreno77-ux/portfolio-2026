@@ -171,7 +171,7 @@ Documentación del comportamiento de capas, apilamiento y elementos flotantes:
 2. **Toasty! Widget (`#toasty-widget`)**
    - **Posicionamiento:** `fixed bottom-0 right-0` (fijado en la esquina inferior derecha de la ventana gráfica).
    - **Capa y Z-Index:** `z-50`, garantizando visibilidad flotante por encima del contenido base.
-   - **Desbordamiento / Peek actual:** Inicialmente oculto fuera de pantalla mediante `style="transform: translate(100%, 100%);"`. Al activarse mediante temporizador (`showToasty()`), la transformación cambia dinámicamente a `translate(0, 0)`, permitiendo que el personaje y su boceto de diálogo ("TOASTY!") hagan peek / aparezcan de forma fluida con transición `transition: transform 0.45s cubic-bezier(0.3, 1.3, 0.3, 1)`.
+    - **Desbordamiento / Peek actual:** Inicialmente oculto fuera de pantalla mediante `style="transform: translate(100%, 100%);"`. Al activarse mediante temporizador (`showToasty()`), la transformación cambia dinámicamente a `translate(20%, 20%)`, permitiendo que el personaje y su boceto de diálogo ("TOASTY!") hagan peek / aparezcan de forma fluida con transición `transition: transform 0.45s cubic-bezier(0.3, 1.3, 0.3, 1)`.
 
 3. **Header & Ticker Bar**
    - **Ticker Bar:** Ubicado al inicio del documento (`<body>`), posicionado en el flujo estático con clases de marquesina/barra superior, acompañado de la animación de entrada `anim-top`.
