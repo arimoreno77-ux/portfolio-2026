@@ -399,13 +399,12 @@
   </footer>
 
   <!-- Toasty! Widget -->
-  <div id="toasty-widget" class="fixed bottom-0 right-0 z-50 pointer-events-auto cursor-pointer">
-    <div class="relative flex items-end justify-end p-2 md:p-4">
-      <div id="toasty-bubble" class="absolute -top-4 right-2 bg-[#E61C1C] text-white font-black text-xs uppercase px-2 py-1 border-2 border-black shadow-[2px_2px_0px_0px_#000000] rotate-[-6deg] opacity-0 transition-opacity z-10">
+  <div id="toasty-widget" class="fixed bottom-0 right-0 z-50 pointer-events-auto cursor-pointer translate-y-1/2" style="transform: translate(100%, 100%); transition: transform 0.45s cubic-bezier(0.3, 1.3, 0.3, 1);">
+    <div class="relative">
+      <div id="toasty-bubble" class="absolute -top-3 left-4 bg-[#E61C1C] text-white font-black text-xs uppercase px-2 py-1 border-2 border-black shadow-[2px_2px_0px_0px_#000000] rotate-[-6deg] opacity-0 transition-opacity">
         TOASTY!
       </div>
-      <img src="assets/img/flash.jpg" alt="Toasty Mobile" class="block md:hidden w-32 h-auto object-contain select-none" />
-      <img src="porfolio/ramon-removebg-preview.png" alt="Toasty Desktop" class="hidden md:block w-40 h-auto object-contain select-none" />
+      <img src="porfolio/ramon-removebg-preview.png" alt="Ramon Toasty" class="h-[160px] w-auto object-contain select-none" />
     </div>
   </div>
 
@@ -414,6 +413,7 @@
       const widget = document.getElementById('toasty-widget');
       const bubble = document.getElementById('toasty-bubble');
       const flashOverlay = document.getElementById('camera-flash');
+      let hideTimeout = null;
 
       function triggerFlash() {
         if (flashOverlay) {
@@ -424,11 +424,33 @@
         }
       }
 
-      if (widget) {
-        widget.addEventListener('click', () => {
-          triggerFlash();
-        });
+      function showToasty() {
+        widget.style.transform = 'translate(0, 0)';
+        if (bubble) bubble.style.opacity = '1';
+        
+        if (hideTimeout) clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+          hideToasty();
+        }, 1500);
       }
+
+      function hideToasty() {
+        if (hideTimeout) clearTimeout(hideTimeout);
+        widget.style.transform = 'translate(100%, 100%)';
+        if (bubble) bubble.style.opacity = '0';
+      }
+
+      widget.addEventListener('click', () => {
+        triggerFlash();
+        hideToasty();
+      });
+
+      setTimeout(() => {
+        showToasty();
+        setInterval(() => {
+          showToasty();
+        }, 35000);
+      }, 3000);
 
       // CV Modal logic
       const openCvBtn = document.getElementById('open-cv-btn');
