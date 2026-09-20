@@ -29,6 +29,7 @@
       background-color: #F4F1EA;
       color: #000000;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow-x: hidden;
     }
     .brutalist-box {
       border: 4px solid #000000;
@@ -52,16 +53,39 @@
       transform: translate(2px, 2px);
       box-shadow: 2px 2px 0px #000000;
     }
-    @keyframes slideFromTop { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
-    @keyframes slideFromLeft { 0% { opacity: 0; transform: translateX(-30px); } 100% { opacity: 1; transform: translateX(0); } }
-    @keyframes slideFromRight { 0% { opacity: 0; transform: translateX(30px); } 100% { opacity: 1; transform: translateX(0); } }
-    @keyframes slideFromBottom { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
-    .anim-top { animation: slideFromTop 0.5s ease-out forwards; }
-    .anim-left { animation: slideFromLeft 0.6s ease-out 0.2s forwards; opacity: 0; }
-    .anim-bottom { animation: slideFromBottom 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; opacity: 0; }
-    .anim-right { animation: slideFromRight 0.6s ease-out 0.6s forwards; opacity: 0; }
-    @keyframes slideFromBottomRightDiagonal { 0% { opacity: 0; transform: translate(50px, 50px); } 100% { opacity: 1; transform: translate(0, 0); } }
-    .anim-diagonal-photo { animation: slideFromBottomRightDiagonal 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards; opacity: 0; }
+    @keyframes slideFromTop { 
+      0% { opacity: 0; transform: translateY(-20px); background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: rgba(255, 255, 255, 0.3); } 
+      100% { opacity: 1; transform: translateY(0); background: #000000; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); border-color: #000000; } 
+    }
+    @keyframes slideFromLeft { 
+      0% { opacity: 0; transform: translateX(-30px); background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: rgba(0, 0, 0, 0.2); } 
+      100% { opacity: 1; transform: translateX(0); background: #FFFFFF; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); border-color: #000000; } 
+    }
+    @keyframes slideFromRight { 
+      0% { opacity: 0; transform: translateX(30px); background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: rgba(0, 0, 0, 0.2); } 
+      100% { opacity: 1; transform: translateX(0); background: #FFFFFF; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); border-color: #000000; } 
+    }
+    @keyframes slideFromBottom { 
+      0% { opacity: 0; transform: translateY(30px); background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: rgba(0, 0, 0, 0.2); } 
+      100% { opacity: 1; transform: translateY(0); background: #FFFFFF; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); border-color: #000000; } 
+    }
+    
+    .anim-top, .anim-left, .anim-bottom, .anim-right, .anim-diagonal-photo {
+      opacity: 0;
+      will-change: transform, opacity, backdrop-filter;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    body.loaded .anim-top { animation: slideFromTop 1.2s cubic-bezier(0.33, 1, 0.68, 1) 0.0s forwards; }
+    body.loaded .anim-left { animation: slideFromLeft 1.2s cubic-bezier(0.33, 1, 0.68, 1) 0.08s forwards; }
+    body.loaded .anim-bottom { animation: slideFromBottom 1.4s cubic-bezier(0.33, 1, 0.68, 1) 0.16s forwards; }
+    body.loaded .anim-right { animation: slideFromRight 1.2s cubic-bezier(0.33, 1, 0.68, 1) 0.24s forwards; }
+
+    @keyframes slideFromBottomRightDiagonal { 
+      0% { opacity: 0; transform: translate(50px, 50px); background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: rgba(255, 255, 255, 0.3); } 
+      100% { opacity: 1; transform: translate(0, 0); background: #000000; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); border-color: #000000; } 
+    }
+    body.loaded .anim-diagonal-photo { animation: slideFromBottomRightDiagonal 1.5s cubic-bezier(0.33, 1, 0.68, 1) 0.3s forwards; }
     @keyframes marqueeLeft {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
@@ -94,6 +118,29 @@
   </style>
 </head>
 <body class="min-h-screen bg-[#F4F1EA] text-black p-4 md:p-10 selection:bg-[#E61C1C] selection:text-white">
+  <!-- Loader / Pantalla de Carga (Phase 1 & 2 - Split Curtain) -->
+  <div id="loader-screen" class="fixed inset-0 z-[10000] pointer-events-auto flex font-mono select-none overflow-hidden">
+    <!-- Left Half Curtain -->
+    <div id="loader-left" class="absolute inset-y-0 left-0 w-[calc(50%+1px)] bg-[#000000] overflow-hidden backdrop-blur-xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-10"></div>
+    <!-- Right Half Curtain -->
+    <div id="loader-right" class="absolute inset-y-0 right-0 w-[calc(50%+1px)] bg-[#000000] overflow-hidden backdrop-blur-xl transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-10"></div>
+    
+    <!-- Content Overlay -->
+    <div id="loader-content" class="absolute inset-0 z-20 flex flex-col justify-center items-center text-center space-y-4 transition-opacity duration-300">
+      <div class="max-w-3xl px-6 space-y-4">
+        <div id="loader-line1" class="text-xl md:text-3xl font-black text-[#E61C1C] tracking-widest uppercase">
+          RAMON_ARIEL_MORENO/ <span id="loader-counter">100</span>
+        </div>
+        <div id="loader-line2" class="text-base md:text-xl font-bold text-white tracking-wider uppercase opacity-90">
+          &gt; DISEÑO, CÓDIGO Y ALMA/
+        </div>
+      </div>
+      <div class="absolute bottom-10 font-mono text-xs text-neutral-500 tracking-widest uppercase">
+        [INICIALIZANDO_SECUENCIA_DE_INICIO_2026]
+      </div>
+    </div>
+  </div>
+
   <!-- Camera Flash Overlay -->
   <div id="camera-flash" class="fixed inset-0 bg-white pointer-events-none z-[9999] opacity-0"></div>
   
@@ -411,6 +458,87 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Loader sequence & Decipher / Progressive Reveal & Stagger reveal (Phase 1 & Phase 2)
+      const loader = document.getElementById('loader-screen');
+      const counterEl = document.getElementById('loader-counter');
+      const line1El = document.getElementById('loader-line1');
+      const line2El = document.getElementById('loader-line2');
+      
+      const originalText2 = "> DISEÑO, CÓDIGO Y ALMA/";
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_/+><#";
+      
+      let count = 100;
+      
+      const loaderInterval = setInterval(() => {
+        count -= 2; // +1.0s total duration (~2.0s total)
+        if (count < 0) count = 0;
+        if (counterEl) {
+          counterEl.textContent = count < 10 ? `0${count}` : count;
+        }
+
+        // Progressive reveal in 3 stages:
+        // Stage 1 (100% to 66%): "RAMON_" + scrambled remainder
+        // Stage 2 (65% to 33%): "RAMON_ARIEL_" + scrambled remainder
+        // Stage 3 (32% to 00%): "RAMON_ARIEL_MORENO/"
+        let prefix1 = "";
+        let remainderLength = 13;
+        if (count > 65) {
+          prefix1 = "RAMON_";
+          remainderLength = 13;
+        } else if (count > 32) {
+          prefix1 = "RAMON_ARIEL_";
+          remainderLength = 7;
+        } else {
+          prefix1 = "RAMON_ARIEL_MORENO/";
+          remainderLength = 0;
+        }
+
+        let scrambledRemainder = "";
+        for (let i = 0; i < remainderLength; i++) {
+          scrambledRemainder += chars[Math.floor(Math.random() * chars.length)];
+        }
+
+        if (line1El) {
+          line1El.innerHTML = `${prefix1}${scrambledRemainder} <span id="loader-counter">${count < 10 ? `0${count}` : count}</span>`;
+        }
+
+        if (line2El) {
+          if (count > 32) {
+            let scrambled2 = "> ";
+            for (let i = 0; i < 18; i++) {
+              scrambled2 += chars[Math.floor(Math.random() * chars.length)];
+            }
+            line2El.textContent = scrambled2;
+          } else {
+            line2El.textContent = originalText2;
+          }
+        }
+
+        if (count <= 0) {
+          clearInterval(loaderInterval);
+          if (counterEl) counterEl.textContent = "00";
+          if (line1El) line1El.innerHTML = `RAMON_ARIEL_MORENO/ 00`;
+
+          // Sweep & Split Curtain Wipe (Phase 2) synchronized at 00%
+          setTimeout(() => {
+            const leftCurtain = document.getElementById('loader-left');
+            const rightCurtain = document.getElementById('loader-right');
+            const contentOverlay = document.getElementById('loader-content');
+            
+            if (contentOverlay) contentOverlay.style.opacity = '0';
+            if (leftCurtain) leftCurtain.style.transform = 'translateX(-100%)';
+            if (rightCurtain) rightCurtain.style.transform = 'translateX(100%)';
+
+            // Start stagger reveal instantly as curtains begin splitting
+            document.body.classList.add('loaded');
+
+            setTimeout(() => {
+              if (loader) loader.remove();
+            }, 750);
+          }, 150);
+        }
+      }, 40);
+
       const widget = document.getElementById('toasty-widget');
       const bubble = document.getElementById('toasty-bubble');
       const flashOverlay = document.getElementById('camera-flash');
