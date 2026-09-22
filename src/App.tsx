@@ -71,22 +71,14 @@ export default function App() {
           {/* Brutalist Profile Photo Placeholder */}
           <div className="lg:col-span-4 bg-black text-[#F4F1EA] border-4 border-black p-6 shadow-[8px_8px_0px_0px_#E61C1C] flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-2 right-2 font-mono text-[10px] text-[#E61C1C] font-black border border-[#E61C1C] px-1">
-              REF_IMG_MISSING
+              FOTO_REF_FALTANTE
             </div>
-            <div className="my-auto py-8 text-center border-2 border-dashed border-[#F4F1EA]/40 p-6 bg-neutral-900">
-              <div className="font-mono text-xs tracking-widest text-[#E61C1C] mb-2 font-bold">
-                [PHOTO_PLACEHOLDER]
-              </div>
-              <div className="text-xl font-black uppercase tracking-wider mb-2">
-                RAMON ARIEL MORENO
-              </div>
-              <div className="font-mono text-xs text-neutral-400">
-                // 34.6037° S, 58.3816° W
-              </div>
+            <div className="my-auto py-4 text-center border-2 border-dashed border-[#F4F1EA]/40 p-4 bg-neutral-900 flex justify-center items-center">
+              <img src="./Ariel 1 1.jpg" alt="Ariel 1 Icon Editor" className="w-full h-auto object-contain border-2 border-black shadow-[4px_4px_0px_0px_#E61C1C]" />
             </div>
             <div className="font-mono text-xs text-neutral-300 pt-4 border-t border-neutral-800 flex justify-between">
-              <span>EDITION: 1/1</span>
-              <span className="text-[#E61C1C] font-bold">VERIFIED</span>
+              <span>1_bit/</span>
+              <span className="text-[#E61C1C] font-bold">Pixel/PNG</span>
             </div>
           </div>
         </section>
